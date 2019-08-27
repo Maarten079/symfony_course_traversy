@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymfArt{% endblock %}
+
+{% block body %}
+    {% if articles %}
+        <table class="table table-striped">
+            <thead>
+            <th>Article Title</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>
+                        <a href="/article/{{ article.id }}" class="btn btn-dark">Show</a>
+                        <a href="/article/edit/{{ article.id }}" class="btn btn-primary">Edit</a>
+                        <a href="/article/delete/{{ article.id }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No articles to display</p>
+    {% endif %}
+{% endblock %}
